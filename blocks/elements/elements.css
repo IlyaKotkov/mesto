@@ -1,0 +1,7 @@
+.elements {
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 47px;
+    max-width: 880px;
+    width: calc(100% - 2*200px);
+}

@@ -1,0 +1,8 @@
+.element__rectangle {
+    margin: 0;
+    background-color: white;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 282px 282px 282px;
+    gap: 48px 40px;
+}

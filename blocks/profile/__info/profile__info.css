@@ -1,0 +1,10 @@
+.profile__info {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    align-self: center;
+    grid-template-columns: 1fr 24px;
+    column-gap: 18px;
+    max-width: 336px;
+    min-height: 73px;
+}
