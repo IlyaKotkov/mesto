@@ -7,3 +7,13 @@
     color: #FFFFFF;
     margin-top: 16px;
 }
+
+@media screen and (max-width: 767px) {
+    .profile__description {
+        font-size: 14px;
+        line-height: 17px;
+        margin-top: 14px;
+        max-width: 288px;
+        text-align: center;
+    }
+}

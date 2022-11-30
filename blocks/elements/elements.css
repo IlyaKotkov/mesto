@@ -4,4 +4,28 @@
     margin-top: 47px;
     max-width: 880px;
     width: calc(100% - 2*200px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 20px 17px;
+}
+
+@media screen and (max-width: 1279px) {
+    .elements {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .elements {
+        width: calc(100% - 2*100px);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .elements {
+        grid-template-columns: repeat(1, 1fr);
+        width: calc(100% - 2*19px);
+    }
 }

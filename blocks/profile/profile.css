@@ -7,3 +7,20 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 1023px) {
+    .profile {
+        width: calc(100% - 2*100px);
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile {
+        width: calc(100% - 2*19px);
+        margin-top: 38px;
+        
+        align-items: center;
+    }
+}

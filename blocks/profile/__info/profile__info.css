@@ -1,10 +1,23 @@
 .profile__info {
     margin: 0;
     padding: 0;
-    display: grid;
-    align-self: center;
-    grid-template-columns: 1fr 24px;
-    column-gap: 18px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
     max-width: 336px;
     min-height: 73px;
 }
+
+@media screen and (max-width: 1023px) {
+    .profile__info {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile__info {
+        display: flex;
+        flex-direction: column;
+    }
+}
+

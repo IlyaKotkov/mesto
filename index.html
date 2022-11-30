@@ -2,10 +2,10 @@
 <html lang="ru">
 
 <head>
-  <link rel="stylesheet" href="./pages/index.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Место</title>
+    <link rel="stylesheet" href="./pages/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Место</title>
 </head>
 
 <body class="page">
@@ -16,75 +16,81 @@
 
     <main class="page__container">
 
+        <section class="popup popup_opened">
+            <div class="popup__container">
+                <button class="popup__closed"></button>
+                <div class="popup__form">
+                    <h1 class="popup__editHeader">Редактировать профиль</h1>
+                    <fieldset class="popup__edit">
+                        <input class="popup__input-container popup__item_el_heading" type="text" placeholder="Имя">
+                        <input class="popup__input-container popup__item_el_subheading" type="text" placeholder="Деятельность">
+                    </fieldset>
+                <button class="popup__submit"></button>
+                </div>
+            </div>
+        </section>
+
         <section class="profile">
             <div class="profile__container">
-                <img class="profile__avatar" src="/images/FinnAndJake.jpg" alt="Аватар">
+                <img class="profile__avatar" src="/images/Jak-iv-kusto.jpg" alt="Аватар">
                 <div class="profile__info">
-                    <p class="profile__name">Финн и Джейк</p>
-                    <button class="profile__editButton"></button>
-                    <p class="profile__description">Путешественники</p>
+                    <h1 class="profile__name">Жак-Ив Кусто <button class="profile__editButton"></button></h1>
+                    <p class="profile__description">Исследователь океана</p>
                 </div>
-            </div>  
+            </div>
             <button class="profile__addButton"></button>
         </section>
 
         <section class="elements">
             <div class="element">
-                <div class="element__rectangle">
-                    <img class="element__image" src="./images/canada.jpg" alt="Озеро посреди гор и леса в Канаде">
-                    <div class="element__container">
-                        <h2 class="element__title">Канада</h2>
-                        <button class="element__likeButton"></button>
-                    </div>
+                <img class="element__image" src="./images/canada.jpg" alt="Озеро посреди гор и леса в Канаде">
+                <div class="element__container">
+                    <h2 class="element__title">Канада</h2>
+                    <button class="element__likeButton element__likeButton_active"></button>
                 </div>
             </div>
             <div class="element">
-                <div class="element__rectangle">
-                    <img class="element__image" src="./images/france.jpg" alt="Лес во франции">
-                    <div class="element__container">
-                        <h2 class="element__title">Франция</h2>
-                        <button class="element__likeButton"></button>
-                    </div>
+                <img class="element__image" src="./images/france.jpg" alt="Лес во франции">
+                <div class="element__container">
+                    <h2 class="element__title">Франция</h2>
+                    <button class="element__likeButton"></button>
                 </div>
             </div>
             <div class="element">
-                <div class="element__rectangle">
-                    <img class="element__image" src="./images/mexico.jpg" alt="живописный подвоный мир Мексики">
-                    <div class="element__container">
-                        <h2 class="element__title">Мексика</h2>
-                        <button class="element__likeButton"></button>
-                    </div>
+                <img class="element__image" src="./images/mexico.jpg" alt="живописный подвоный мир Мексики">
+                <div class="element__container">
+                    <h2 class="element__title">Мексика</h2>
+                    <button class="element__likeButton"></button>
                 </div>
             </div>
             <div class="element">
-                <div class="element__rectangle">
-                    <img class="element__image" src="./images/namibia (2).jpg" alt="Пляж с океаном в намбии">
-                    <div class="element__container">
-                        <h2 class="element__title">Намибия</h2>
-                        <button class="element__likeButton"></button>
-                    </div>
+                <img class="element__image" src="./images/namibia (2).jpg" alt="Пляж с океаном в намбии">
+                <div class="element__container">
+                    <h2 class="element__title">Намибия</h2>
+                    <button class="element__likeButton"></button>
+                </div>
+
+            </div>
+            <div class="element">
+                <img class="element__image" src="./images/namibia.jpg" alt="Пустыня">
+                <div class="element__container">
+                    <h2 class="element__title">Намибия</h2>
+                    <button class="element__likeButton"></button>
                 </div>
             </div>
             <div class="element">
-                <div class="element__rectangle">
-                    <img class="element__image" src="./images/namibia.jpg" alt="Пустыня">
-                    <div class="element__container">
-                        <h2 class="element__title">Намибия</h2>
-                        <button class="element__likeButton"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="element">
-                <div class="element__rectangle">
-                    <img class="element__image" src="./images/osaka.jpg" alt="ночная улица в городе Осака">
-                    <div class="element__container">
-                        <h2 class="element__title">Япония, Осака</h2>
-                        <button class="element__likeButton"></button>
-                    </div>
+                <img class="element__image" src="./images/osaka.jpg" alt="ночная улица в городе Осака">
+                <div class="element__container">
+                    <h2 class="element__title">Япония, Осака</h2>
+                    <button class="element__likeButton"></button>
                 </div>
             </div>
 
         </section>
+
+        <footer class="footer">
+            <p class="footer__text">&#169; 2022 Котков Илья</p>
+        </footer>
 
     </main>
 

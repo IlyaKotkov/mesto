@@ -14,3 +14,13 @@
 .profile__addButton:hover {
     opacity: .6;
 }
+
+@media screen and (max-width: 1023px) {
+    .profile__addButton {
+        margin-top: 30px;
+        background-repeat: no-repeat;
+        background-image: url(../../../images/profile-add-btn-mobile.svg);
+        width: 284px;
+        justify-content: center;
+    }
+}

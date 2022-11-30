@@ -1,5 +1,27 @@
 .element__image {
     margin: 0;
-    width: 282px;
-    height: 282px;
+    padding: 0;
+    width: 288px;
+    height: 288px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1279px) {
+    .element__image {
+        width: 302px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .element__image {
+        max-width: 273px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .element__image {
+        max-width: 282px;
+    }
 }

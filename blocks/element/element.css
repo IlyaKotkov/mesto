@@ -1,6 +1,26 @@
 .element {
     margin: 0;
-    display: grid;
-    grid-template-columns: 282px 282px 282px;
-    gap: 48px 40px;
+    padding: 0;
+    border-radius: 10px;
+    background-color: white;
+    max-width: 288px;
 }
+
+@media screen and (max-width: 1279px) {
+    .element {
+        max-width: 302px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .element {
+        max-width: 273px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .element {
+        max-width: 282px;
+    }
+}
+
