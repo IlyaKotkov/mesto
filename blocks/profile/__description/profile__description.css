@@ -6,6 +6,7 @@
     line-height: 22px;
     color: #FFFFFF;
     margin-top: 5px;
+    max-width: 336px;
 }
 
 @media screen and (max-width: 767px) {
@@ -13,7 +14,7 @@
         font-size: 14px;
         line-height: 17px;
         margin-top: 9px;
-        max-width: 288px;
+        max-width: 282px;
         text-align: center;
     }
 }

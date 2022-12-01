@@ -10,17 +10,20 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    max-width: 294px;
 }
 
 @media screen and (max-width: 1279px) {
     .profile__name {
         font-size: 35px;
+        max-width: 260px;
     }
 }
 
 @media screen and (max-width: 1023px) {
     .profile__name {
         font-size: 30px;
+        max-width: 210px;
     }
 }
 
@@ -33,5 +36,6 @@
         text-align: center;
         align-self: center;
         margin-top: 25px;
+        max-width: 199px;
     }
 }
