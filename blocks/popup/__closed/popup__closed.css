@@ -6,6 +6,7 @@
     width: 32px;
     height: 32px;
     background: none;
+    background-repeat: no-repeat;
     cursor: pointer;
     background-image: url(../../../images/CloseIcon.png);
     transition: opacity .82s linear;
