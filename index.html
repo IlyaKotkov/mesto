@@ -16,17 +16,17 @@
 
     <main class="page__container">
 
-        <section class="popup popup_opened">
+        <section class="popup">
             <div class="popup__container">
                 <button class="popup__closed"></button>
-                <div class="popup__form">
-                    <h1 class="popup__editHeader">Редактировать профиль</h1>
+                <h1 class="popup__editHeader">Редактировать профиль</h1>
+                <form class="popup__form">
                     <fieldset class="popup__edit">
-                        <input class="popup__input-container popup__item_el_heading" type="text" placeholder="Имя">
-                        <input class="popup__input-container popup__item_el_subheading" type="text" placeholder="Деятельность">
+                        <input class="popup__input-container popup__input_type_name" type="text" placeholder="Имя">
+                        <input class="popup__input-container popup__input_type_job" type="text" placeholder="Деятельность">
                     </fieldset>
-                <button class="popup__submit"></button>
-                </div>
+                    <button class="popup__submit" type="submit">Сохранить</button>
+                </form>
             </div>
         </section>
 
@@ -34,7 +34,8 @@
             <div class="profile__container">
                 <img class="profile__avatar" src="/images/Jak-iv-kusto.jpg" alt="Аватар">
                 <div class="profile__info">
-                    <h1 class="profile__name">Жак-Ив Кусто <button class="profile__editButton"></button></h1>
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="profile__editButton"></button>
                     <p class="profile__description">Исследователь океана</p>
                 </div>
             </div>
@@ -46,7 +47,7 @@
                 <img class="element__image" src="./images/canada.jpg" alt="Озеро посреди гор и леса в Канаде">
                 <div class="element__container">
                     <h2 class="element__title">Канада</h2>
-                    <button class="element__likeButton element__likeButton_active"></button>
+                    <button class="element__likeButton"></button>
                 </div>
             </div>
             <div class="element">
@@ -93,5 +94,5 @@
         </footer>
 
     </main>
-
+<script src="./scripts/script.js"></script>
 </body>

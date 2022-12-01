@@ -10,10 +10,26 @@
     background-repeat: no-repeat;
     height: 24px;
     width: 24px;
+    position: absolute;
+    right: 0;
+    top: 35px;
+
 }
 
 .profile__editButton:hover {
     opacity: .6;
+}
+
+@media screen and (max-width: 1279px) {
+    .profile__editButton {
+        top: 35px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .profile__editButton {
+        top: 45px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -21,5 +37,7 @@
         background-image: url(../../../images/Edit\ Button.png);
         height: 18px;
         width: 18px;
+        right: 19px;
+        top: 32px;
     }
 }

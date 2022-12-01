@@ -19,8 +19,7 @@
 @media screen and (max-width: 767px) {
     .profile {
         width: calc(100% - 2*19px);
-        margin-top: 38px;
-        
+        margin-top: 42px;
         align-items: center;
     }
 }
