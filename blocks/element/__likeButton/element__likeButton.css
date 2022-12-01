@@ -10,6 +10,7 @@
     background-image: url(../../../images/heart.svg);
     transition: opacity .82s linear;
     opacity: 1;
+    background-repeat: no-repeat;
 }
 
 .element__likeButton:hover {
