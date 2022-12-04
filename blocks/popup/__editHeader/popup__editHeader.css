@@ -1,8 +1,8 @@
 .popup__editHeader {
     margin: 0;
     padding: 0;
-    margin-top: 34px;
-    margin-left: 34px;
+    margin-top: 18px;
+    margin-left: 36px;
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -13,7 +13,7 @@
     .popup__editHeader{
         font-size: 18px;
         line-height: 22px;
-        margin-top: 25px;
-        margin-left: 22px;
+        margin-top: 20px;
+        margin-left: 20px;
     }
 }

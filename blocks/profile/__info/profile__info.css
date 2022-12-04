@@ -6,7 +6,6 @@
     justify-content: center;
     position: relative;
     width: 336px;
-    min-height: 73px;
 }
 
 @media screen and (max-width: 1279px) {

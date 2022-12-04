@@ -1,7 +1,8 @@
 .popup__closed {
+    padding: 0;
     position: absolute;
-    right: -35px;
-    top: -35px;
+    right: -40px;
+    top: -40px;
     border: none;
     width: 32px;
     height: 32px;
@@ -20,8 +21,7 @@
 @media screen and (max-width: 1023px) {
     .popup__closed{
         right: 0;
-        top: -35px;
-        background-image: url(../../../images/CloseIcon.png);
+        background-image: url(../../../images/CloseIcon1230.png);
         width: 20px;
         height: 20px;
     }

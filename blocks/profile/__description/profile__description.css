@@ -7,6 +7,9 @@
     color: #FFFFFF;
     margin-top: 5px;
     max-width: 336px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 767px) {

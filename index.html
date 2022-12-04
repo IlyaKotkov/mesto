@@ -16,84 +16,83 @@
 
     <main class="page__container">
 
-        <section class="popup">
-            <div class="popup__container">
-                <button class="popup__closed"></button>
-                <h1 class="popup__editHeader">Редактировать профиль</h1>
-                <form class="popup__form">
-                    <fieldset class="popup__edit">
-                        <input class="popup__input popup__input_type_name" type="text" placeholder="Имя">
-                        <input class="popup__input popup__input_type_job" type="text" placeholder="Деятельность">
-                    </fieldset>
-                    <button class="popup__submit" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </section>
-
         <section class="profile">
             <div class="profile__container">
                 <img class="profile__avatar" src="./images/Jak-iv-kusto.jpg" alt="Аватар">
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button class="profile__editButton"></button>
+                    <button class="profile__editButton" type="button" aria-label="Редактировать"></button>
                     <p class="profile__description">Исследователь океана</p>
                 </div>
             </div>
-            <button class="profile__addButton"></button>
+            <button class="profile__addButton" type="button" aria-label="Добавить"></button>
         </section>
 
         <section class="elements">
-            <div class="element">
+            <article class="element">
                 <img class="element__image" src="./images/canada.jpg" alt="Озеро посреди гор и леса в Канаде">
                 <div class="element__container">
                     <h2 class="element__title">Канада</h2>
-                    <button class="element__likeButton"></button>
+                    <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
                 </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
                 <img class="element__image" src="./images/france.jpg" alt="Лес во франции">
                 <div class="element__container">
                     <h2 class="element__title">Франция</h2>
-                    <button class="element__likeButton"></button>
+                    <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
                 </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
                 <img class="element__image" src="./images/mexico.jpg" alt="живописный подвоный мир Мексики">
                 <div class="element__container">
                     <h2 class="element__title">Мексика</h2>
-                    <button class="element__likeButton"></button>
+                    <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
                 </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
                 <img class="element__image" src="./images/namibia(2).jpg" alt="Пляж с океаном в намбии">
                 <div class="element__container">
                     <h2 class="element__title">Намибия</h2>
-                    <button class="element__likeButton"></button>
+                    <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
                 </div>
-
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
                 <img class="element__image" src="./images/namibia.jpg" alt="Пустыня">
                 <div class="element__container">
                     <h2 class="element__title">Намибия</h2>
-                    <button class="element__likeButton"></button>
+                    <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
                 </div>
-            </div>
-            <div class="element">
+            </article>
+            <article class="element">
                 <img class="element__image" src="./images/osaka.jpg" alt="ночная улица в городе Осака">
                 <div class="element__container">
                     <h2 class="element__title">Япония, Осака</h2>
-                    <button class="element__likeButton"></button>
+                    <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
                 </div>
-            </div>
-
+            </article>
         </section>
 
-        <footer class="footer">
-            <p class="footer__text">&#169; 2022 Котков Илья</p>
-        </footer>
-
     </main>
+
+    <div class="popup">
+        <div class="popup__container">
+            <button class="popup__closed" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__editHeader">Редактировать профиль</h3>
+            <form class="popup__form" name="edit-form">
+                <fieldset class="popup__edit">
+                    <input name="input-name-profile" class="popup__input popup__input_type_name" type="text" placeholder="Имя">
+                    <input name="input-job-profile" class="popup__input popup__input_type_job" type="text" placeholder="Деятельность">
+                </fieldset>
+                <button class="popup__submit" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p class="footer__text">&#169; 2022 Котков Илья</p>
+    </footer>
+
 <script src="./scripts/script.js"></script>
 </body>
 
