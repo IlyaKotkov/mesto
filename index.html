@@ -43,15 +43,19 @@
         </template>
     </section>
 
-    <div class="popup">
+    <footer class="footer">
+        <p class="footer__text">&#169; 2022 Котков Илья</p>
+    </footer>
+
+    <div class="popup popup_type_edit">
         <div class="popup__container">
             <button class="popup__closed" type="button" aria-label="Закрыть"></button>
-            <h3 class="popup__editHeader">Редактировать профиль</h3>
+            <h3 class="popup__editHeader" id="card-popup" >Редактировать профиль</h3>
             <form class="popup__form" name="edit-form">
                 <fieldset class="popup__edit">
-                    <input name="input-name-profile" class="popup__input popup__input_type_name" type="text"
+                    <input name="input-name-profile" id="card-popup-name" class="popup__input popup__input_type_name" type="text"
                         placeholder="Имя">
-                    <input name="input-job-profile" class="popup__input popup__input_type_job" type="text"
+                    <input name="input-job-profile" id="card-popup-url" class="popup__input popup__input_type_job" type="text"
                         placeholder="Деятельность">
                 </fieldset>
                 <button class="popup__submit" type="submit">Сохранить</button>
@@ -59,9 +63,21 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p class="footer__text">&#169; 2022 Котков Илья</p>
-    </footer>
+    <div class="popup popup_type_add">
+        <div class="popup__container">
+            <button class="popup__closed" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__editHeader">Новое Место</h3>
+            <form class="popup__form" name="edit-form">
+                <fieldset class="popup__edit">
+                    <input name="input-name" class="popup__input popup__input_type_name" type="text"
+                        placeholder="Название">
+                    <input name="input-url-card" class="popup__input popup__input_type_url" type="text"
+                        placeholder="ссылка на картинку">
+                </fieldset>
+                <button class="popup__submit" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
 
     <script src="./scripts/script.js"></script>
 </body>
