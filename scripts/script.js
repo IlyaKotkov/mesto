@@ -13,7 +13,8 @@ const closePopupButton = popupEdit.querySelector('.popup__closed');
 const closeAddPopupButton = popupAdd.querySelector('.popup__closed');
 const elementContent = document.querySelector(".elements");
 const elementTemplate = document.querySelector("#element__template").content;
-
+const submitPopup = popupAdd.querySelector('popup__submit');
+ 
 function openPopup(popup) {
   popup.classList.add("popup_opened")
 }
@@ -92,25 +93,33 @@ function renderElement({ name, link }) {
 }
 render();
 
-const name = popupAdd.querySelector('popup__input_type_name');
-const link = document.querySelector('popup__input_type_url');
-
 openAddButton.addEventListener('click', () => {
   openPopup(popupAdd);
 })
 
+const nameImage = popupAdd.querySelector('.popup__input_type_name');
+const linkImage = document.querySelector('.popup__input_type_url');
+
 function saveAddCard(event) {
   event.preventDefault();
-  const name = popupAdd.querySelector('popup__input_type_name');
-  const link = document.querySelector('popup__input_type_url');
-  const newCard = renderElement({ name, link })
-  if (newCard) render(newCard, elementContent)
+  const name = nameImage.value;
+  const link = linkImage.value;
+  const newCardImage = renderElement({name, link})
+  if (newCardImage) addCard(newCardImage, elementContent)
   closePopup(popupAdd);
   formProfileAdd.reset();
 }
 formProfileAdd.addEventListener('submit', saveAddCard);
-console.log(saveAddCard);
 
 closeAddPopupButton.addEventListener('click', () => {
   closePopup(popupAdd);
+})
+
+const imageCont = document.querySelector('.popup_type_image');
+const image = document.querySelector('.element__image');
+const imagePopup = document.querySelector('.popup__image');
+
+image.addEventListener('click', () => {
+  imagePopup.classList.toggle('show');
+  openPopup(imageCont);
 })
