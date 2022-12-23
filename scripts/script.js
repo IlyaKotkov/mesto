@@ -1,5 +1,5 @@
-const formProfileEdit = document.querySelector("#editForm")
-const formProfileAdd = document.querySelector("#addForm")
+const formProfileEdit = document.querySelector('#editForm')
+const formProfileAdd = document.querySelector('#addForm')
 const openPopupButton = document.querySelector('.profile__editButton');
 const popup = document.querySelector('.popup');
 const namePopupInput = document.querySelector('.popup__input_type_name');
@@ -11,16 +11,18 @@ const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const closePopupButton = popupEdit.querySelector('.popup__closed');
 const closeAddPopupButton = popupAdd.querySelector('.popup__closed');
-const elementContent = document.querySelector(".elements");
-const elementTemplate = document.querySelector("#element__template").content;
+const elementContent = document.querySelector('.elements');
+
+const elementTemplate = document.querySelector('#element__template').content;
+
 const submitPopup = popupAdd.querySelector('popup__submit');
  
 function openPopup(popup) {
-  popup.classList.add("popup_opened")
+  popup.classList.add('popup_opened')
 }
 
 function closePopup(popup) {
-  popup.classList.remove("popup_opened")
+  popup.classList.remove('popup_opened')
 }
 
 openPopupButton.addEventListener('click', () => {
@@ -68,30 +70,52 @@ const initialCards = [
     }
 ];
 
-initialCards.map(function (item) {
-  return {
-    name: item.name,
-    link: item.link
-  };
-});
+const imageNewPopup = document.querySelector('.popup_type_image');
+const closeImagePopup = imageNewPopup.querySelector('.popup__closed');
+const cardTitle = document.querySelector('.popup__signature');
+const popupImageCard = document.querySelector('.popup__image');
+
+function imageOpenPopup(element, link) {
+  const imageTitle = element.querySelector(".element__title").textContent;
+  popupImageCard.src = link;
+  imageNewPopup.alt = imageTitle;
+   cardTitle.textContent = imageTitle;
+   openPopup(imageNewPopup);
+}
+
+closeImagePopup.addEventListener('click', () => {
+  closePopup(imageNewPopup);
+})
 
 function render() {initialCards.forEach(renderElement);}
 
 function renderElement({ name, link }) {
-  const element = elementTemplate.querySelector(".element").cloneNode(true);
+  const element = elementTemplate.querySelector('.element').cloneNode(true);
+  const popupImage = element.querySelector('.element__image');
   element.querySelector(".element__title").textContent = name;
-  element.querySelector(".element__image").src = link;
-  elementContent.prepend(element);
+  popupImage.src = link;
+  elementContent.append(element);
 
-  element.querySelector('.element__deleteButton').addEventListener('click', () => {
-    element.remove();
-  });
+    popupImage.addEventListener('click', () => {
+      imageOpenPopup(element, link);
+    });
+
+   function deleteCard(event) {
+    event.target.closest('.element').remove();
+   }
+   element.querySelector('.element__deleteButton').addEventListener('click', deleteCard);
   
   element.querySelector('.element__likeButton').addEventListener('click', (e) => 
    e.target.classList.toggle('element__likeButton_active')
-  ); 
+  );
+   
+  return element;
 }
 render();
+
+function renderCard(element, container) {
+  container.prepend(element)
+}
 
 openAddButton.addEventListener('click', () => {
   openPopup(popupAdd);
@@ -105,7 +129,7 @@ function saveAddCard(event) {
   const name = nameImage.value;
   const link = linkImage.value;
   const newCardImage = renderElement({name, link})
-  if (newCardImage) addCard(newCardImage, elementContent)
+  if (newCardImage) renderCard(newCardImage, elementContent)
   closePopup(popupAdd);
   formProfileAdd.reset();
 }
@@ -115,11 +139,8 @@ closeAddPopupButton.addEventListener('click', () => {
   closePopup(popupAdd);
 })
 
-const imageCont = document.querySelector('.popup_type_image');
-const image = document.querySelector('.element__image');
-const imagePopup = document.querySelector('.popup__image');
 
-image.addEventListener('click', () => {
-  imagePopup.classList.toggle('show');
-  openPopup(imageCont);
-})
+
+
+
+
