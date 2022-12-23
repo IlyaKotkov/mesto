@@ -13,7 +13,7 @@
     opacity: 1;
     cursor: pointer;
     overflow: hidden;
-    outline: none
+    outline: none;
 }
 
 .element__deleteButton:hover {
