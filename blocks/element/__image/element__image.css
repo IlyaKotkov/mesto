@@ -5,7 +5,9 @@
     height: 282px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    display: block;
     object-fit: cover;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1279px) {
