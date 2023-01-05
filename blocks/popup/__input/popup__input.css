@@ -9,11 +9,11 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding-bottom: 9px;
-    margin-bottom: 30px;  
+    margin-top: 13px;
 }
 
-.popup__input:last-child {
-    margin-bottom: 0;
+.popup__input:first-child {
+    margin-top: 0;
 }
 
 @media screen and (max-width: 1023px) {

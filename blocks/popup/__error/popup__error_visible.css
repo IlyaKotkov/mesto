@@ -1,0 +1,16 @@
+.popup__error_visible {
+    padding-top: 5px;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ff0000;
+  }
+
+.popup__error_visible:valid {
+    border-bottom: 1px solid green;
+}
+
+.popup__error_visible:invalid {
+    border-bottom: 1px solid red;
+}

@@ -51,13 +51,15 @@
         <div class="popup__container">
             <button class="popup__closed" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__editHeader" id="card-popup" >Редактировать профиль</h3>
-            <form class="popup__form" id="editForm" name="editForm">
-                <fieldset class="popup__edit">
+            <form class="popup__form" id="editForm" name="editForm" novalidate>
+                <div class="popup__edit">
                     <input name="input-name-profile" id="card-popup-name" class="popup__input popup__input_type_name" type="text"
-                        placeholder="Имя">
+                        placeholder="Имя" minlength="2" maxlength="40" required>
+                        <span class="card-popup-name-error popup__error_visible" ></span>
                     <input name="input-job-profile" id="card-popup-url" class="popup__input popup__input_type_job" type="text"
-                        placeholder="Деятельность">
-                </fieldset>
+                        placeholder="Деятельность" minlength="2" maxlength="200" required>
+                        <span class="card-popup-url-error popup__error_visible" ></span>
+                </div>
                 <button class="popup__submit" type="submit">Сохранить</button>
             </form>
         </div>
@@ -68,12 +70,14 @@
             <button class="popup__closed" type="button" aria-label="Закрыть"></button>
             <h3 class="popup__editHeader">Новое Место</h3>
             <form class="popup__form" id="addForm" name="addForm">
-                <fieldset class="popup__edit">
+                <div class="popup__edit">
                     <input name="input-name" class="popup__input popup__input_type_name" type="text"
                         placeholder="Название">
-                    <input name="input-url-card" class="popup__input popup__input_type_url" type="text"
+                        
+                    <input name="input-url-card" class="popup__input popup__input_type_url" type="url"
                         placeholder="ссылка на картинку">
-                </fieldset>
+                        
+                </div>
                 <button class="popup__submit" type="submit">Сохранить</button>
             </form>
         </div>
@@ -87,6 +91,7 @@
         </figure>
     </div>
 
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/card.js"></script>
     <script src="./scripts/script.js"></script>
 </body>

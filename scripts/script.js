@@ -1,5 +1,14 @@
+configValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}; 
+
 const profileEditForm = document.querySelector('#editForm')
-const ProfileAddForm = document.querySelector('#addForm')
+const profileAddForm = document.querySelector('#addForm')
 const buttonOpenPopupEdit = document.querySelector('.profile__editButton');
 const popupInputName = document.querySelector('.popup__input_type_name');
 const popupActivityInput = document.querySelector('.popup__input_type_job');
@@ -107,14 +116,16 @@ function saveAddCard(event) {
   const newCardImage = renderElement({name, link})
   renderCard(newCardImage, elementContent)
   closePopup(popupAdd);
-  ProfileAddForm.reset();
+  profileAddForm.reset();
 }
-ProfileAddForm.addEventListener('submit', saveAddCard);
+profileAddForm.addEventListener('submit', saveAddCard);
 
 buttonCloseAddImage.addEventListener('click', () => {
   closePopup(popupAdd);
 })
 
+
+enableValidation(configValidation);
 
 
 
