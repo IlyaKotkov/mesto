@@ -36,13 +36,22 @@ function closePopupEsc(event) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
-  document.addEventListener("keydown", closePopupEsc)
+  document.removeEventListener("keydown", closePopupEsc)
 }
 
-buttonOpenPopupEdit.addEventListener('click', () => {
+const popups = document.querySelectorAll('.popup')
+popups.forEach((item) => {
+  item.addEventListener('click', (evt) => {
+    if(evt.target.classList.contains('popup_opened')) {
+      closePopup(item)
+    }
+  })
+})
+
+buttonOpenPopupEdit.addEventListener('click', () => { 
   popupInputName.value = profileName.textContent;
-  popupActivityInput.value = profileDescription.textContent;
-    openPopup(popupEdit);
+  popupActivityInput.value = profileDescription.textContent; 
+  openPopup(popupEdit);
 })
 
 function saveEditProfile(event) {
@@ -57,33 +66,20 @@ buttonCloseEditProfile.addEventListener('click', () => {
   closePopup(popupEdit);
 })
 
-popupEdit.addEventListener("click", (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupEdit)
-  }
-})
-
 const popupImageWindow = document.querySelector('.popup_type_image');
 const buttonClosedImagePopup = popupImageWindow.querySelector('.popup__closed');
 const popupSignatureCard = document.querySelector('.popup__signature');
 const popupElementImage = document.querySelector('.popup__image');
 
 function openImagePopup(elementTitle, link) {
-  elementTitle.textContent;
   popupElementImage.src = link;
-  popupImageWindow.alt = elementTitle;
+  popupImageWindow.alt = popupElementImage;
   popupSignatureCard.textContent = elementTitle;
    openPopup(popupImageWindow);
 }
 
 buttonClosedImagePopup.addEventListener('click', () => {
   closePopup(popupImageWindow);
-})
-
-popupImageWindow.addEventListener("click", (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupImageWindow)
-  }
 })
 
 function render() {
@@ -97,6 +93,7 @@ function renderElement({ name, link }) {
   const element = elementTemplate.querySelector('.element').cloneNode(true);
   const elementTitle = element.querySelector(".element__title");
   const image = element.querySelector('.element__image');
+  const trashButton = element.querySelector(".element__deleteButton")
   elementTitle.textContent = name;
   image.src = link;
   image.setAttribute("alt", name);
@@ -105,10 +102,9 @@ function renderElement({ name, link }) {
       openImagePopup(name, link);
     });
 
-   function deleteCard(event) {
-    event.target.closest('.element').remove();
-   }
-   element.querySelector('.element__deleteButton').addEventListener('click', deleteCard);
+    trashButton.addEventListener("click", () => {
+      element.remove()
+    })
   
   element.querySelector('.element__likeButton').addEventListener('click', (e) => 
    e.target.classList.toggle('element__likeButton_active')
@@ -123,6 +119,7 @@ function renderCard(element, container) {
 }
 
 buttonOpenAddPopup.addEventListener('click', () => {
+  disableSaveButton(popupAdd, configValidation)
   openPopup(popupAdd);
 })
 
@@ -139,12 +136,6 @@ function saveAddCard(event) {
   profileAddForm.reset();
 }
 profileAddForm.addEventListener('submit', saveAddCard);
-
-popupAdd.addEventListener("click", (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupAdd)
-  }
-})
 
 buttonCloseAddImage.addEventListener('click', () => {
   closePopup(popupAdd);

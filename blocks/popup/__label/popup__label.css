@@ -1,0 +1,7 @@
+.popup__label {
+    margin-bottom: 30px;
+}
+
+.popup__label:last-child {
+    margin-bottom: 0;
+}

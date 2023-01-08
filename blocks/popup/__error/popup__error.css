@@ -1,5 +1,7 @@
 .popup__error {
+    position: absolute;
     padding-top: 5px;
+    display: block;
     font-family: "Inter";
     font-weight: 400;
     font-size: 12px;

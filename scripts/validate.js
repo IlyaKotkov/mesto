@@ -50,6 +50,15 @@ function setEventListeners(formElement, config) {
   })
 }
 
+function disableSaveButton(popup, config) {
+  const buttonSubmit = popup.querySelector(config.submitButtonSelector)
+  if (buttonSubmit) {
+    buttonSubmit.classList.remove(config.activeButtonClass)
+    buttonSubmit.classList.add(config.inactiveButtonClass)
+    buttonSubmit.disabled = true
+  }
+}
+
   
 function enableValidation(config) {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
