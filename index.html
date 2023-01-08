@@ -71,12 +71,12 @@
             <h3 class="popup__editHeader">Новое Место</h3>
             <form class="popup__form" id="addForm" name="addForm">
                 <div class="popup__edit">
-                    <input name="input-name" class="popup__input popup__input_type_name" type="text"
-                        placeholder="Название">
-                        
-                    <input name="input-url-card" class="popup__input popup__input_type_url" type="url"
-                        placeholder="ссылка на картинку">
-                        
+                    <input name="input-name" id="card-popup-name" class="popup__input popup__input_type_name" type="text"
+                        placeholder="Название" minlength="2" maxlength="30" required>
+                    <span class="card-popup-name-error popup__error_visible" ></span>  
+                    <input name="input-url-card" id="card-popup-url" class="popup__input popup__input_type_url" type="url"
+                        placeholder="ссылка на картинку" required>
+                    <span class="card-popup-url-error popup__error_visible"></span> 
                 </div>
                 <button class="popup__submit" type="submit">Сохранить</button>
             </form>

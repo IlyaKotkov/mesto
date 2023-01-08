@@ -2,7 +2,7 @@ configValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__button_disabled',
+  inactiveButtonClass: 'popup__submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 }; 
@@ -24,10 +24,19 @@ const elementTemplate = document.querySelector('#element__template').content;
 
 function openPopup(popup) {
   popup.classList.add('popup_opened')
+  document.addEventListener("keydown", closePopupEsc)
+}
+
+function closePopupEsc(event) {
+  if (event.code == "Escape") {
+    const popupOpened = document.querySelector(".popup_opened")
+    closePopup(popupOpened)  
+  }
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
+  document.addEventListener("keydown", closePopupEsc)
 }
 
 buttonOpenPopupEdit.addEventListener('click', () => {
@@ -48,6 +57,11 @@ buttonCloseEditProfile.addEventListener('click', () => {
   closePopup(popupEdit);
 })
 
+popupEdit.addEventListener("click", (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupEdit)
+  }
+})
 
 const popupImageWindow = document.querySelector('.popup_type_image');
 const buttonClosedImagePopup = popupImageWindow.querySelector('.popup__closed');
@@ -64,6 +78,12 @@ function openImagePopup(elementTitle, link) {
 
 buttonClosedImagePopup.addEventListener('click', () => {
   closePopup(popupImageWindow);
+})
+
+popupImageWindow.addEventListener("click", (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupImageWindow)
+  }
 })
 
 function render() {
@@ -120,14 +140,16 @@ function saveAddCard(event) {
 }
 profileAddForm.addEventListener('submit', saveAddCard);
 
+popupAdd.addEventListener("click", (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupAdd)
+  }
+})
+
 buttonCloseAddImage.addEventListener('click', () => {
   closePopup(popupAdd);
 })
 
 
 enableValidation(configValidation);
-
-
-
-
 
