@@ -5,7 +5,7 @@ configValidation = {
   inactiveButtonClass: 'popup__submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error'
-}; 
+};
 
 const profileEditForm = document.querySelector('#editForm')
 const profileAddForm = document.querySelector('#addForm')
@@ -30,7 +30,7 @@ function openPopup(popup) {
 function closePopupEsc(event) {
   if (event.code == "Escape") {
     const popupOpened = document.querySelector(".popup_opened")
-    closePopup(popupOpened)  
+    closePopup(popupOpened)
   }
 }
 
@@ -42,15 +42,15 @@ function closePopup(popup) {
 const popups = document.querySelectorAll('.popup')
 popups.forEach((item) => {
   item.addEventListener('click', (evt) => {
-    if(evt.target.classList.contains('popup_opened')) {
+    if (evt.target.classList.contains('popup_opened')) {
       closePopup(item)
     }
   })
 })
 
-buttonOpenPopupEdit.addEventListener('click', () => { 
+buttonOpenPopupEdit.addEventListener('click', () => {
   popupInputName.value = profileName.textContent;
-  popupActivityInput.value = profileDescription.textContent; 
+  popupActivityInput.value = profileDescription.textContent;
   openPopup(popupEdit);
 })
 
@@ -75,7 +75,7 @@ function openImagePopup(elementTitle, link) {
   popupElementImage.src = link;
   popupImageWindow.alt = popupElementImage;
   popupSignatureCard.textContent = elementTitle;
-   openPopup(popupImageWindow);
+  openPopup(popupImageWindow);
 }
 
 buttonClosedImagePopup.addEventListener('click', () => {
@@ -99,17 +99,17 @@ function renderElement({ name, link }) {
   image.setAttribute("alt", name);
 
   image.addEventListener('click', () => {
-      openImagePopup(name, link);
-    });
+    openImagePopup(name, link);
+  });
 
-    trashButton.addEventListener("click", () => {
-      element.remove()
-    })
-  
-  element.querySelector('.element__likeButton').addEventListener('click', (e) => 
-   e.target.classList.toggle('element__likeButton_active')
+  trashButton.addEventListener("click", () => {
+    element.remove()
+  })
+
+  element.querySelector('.element__likeButton').addEventListener('click', (e) =>
+    e.target.classList.toggle('element__likeButton_active')
   );
-   
+
   return element;
 }
 render();
@@ -130,7 +130,7 @@ function saveAddCard(event) {
   event.preventDefault();
   const name = popupInputNameImage.value;
   const link = popupInputLinkImage.value;
-  const newCardImage = renderElement({name, link})
+  const newCardImage = renderElement({ name, link })
   renderCard(newCardImage, elementContent)
   closePopup(popupAdd);
   profileAddForm.reset();
