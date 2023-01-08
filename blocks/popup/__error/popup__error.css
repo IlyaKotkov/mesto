@@ -1,4 +1,4 @@
-.popup__error_visible {
+.popup__error {
     padding-top: 5px;
     font-family: "Inter";
     font-weight: 400;
@@ -7,10 +7,10 @@
     color: #ff0000;
   }
 
-.popup__error_visible:valid {
+.popup__error:valid {
     border-bottom: 1px solid green;
 }
 
-.popup__error_visible:invalid {
+.popup__error:invalid {
     border-bottom: 1px solid red;
 }
