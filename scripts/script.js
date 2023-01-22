@@ -1,11 +1,8 @@
-configValidation = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error'
-};
+import Card from "./card.js";
+import { initialCards } from "./initialcards.js";
+//import { disableSaveButton } from "./validate.js";
+//import { enableValidation } from "./validate.js";
+//import { configValidation } from "./configvalidation.js";
 
 const profileEditForm = document.querySelector('#editForm')
 const profileAddForm = document.querySelector('#addForm')
@@ -66,60 +63,75 @@ buttonCloseEditProfile.addEventListener('click', () => {
   closePopup(popupEdit);
 })
 
-const popupImageWindow = document.querySelector('.popup_type_image');
-const buttonClosedImagePopup = popupImageWindow.querySelector('.popup__closed');
-const popupSignatureCard = document.querySelector('.popup__signature');
-const popupElementImage = document.querySelector('.popup__image');
+ const popupImageWindow = document.querySelector('.popup_type_image');
+ const buttonClosedImagePopup = popupImageWindow.querySelector('.popup__closed');
+ const popupSignatureCard = document.querySelector('.popup__signature');
+ const popupElementImage = document.querySelector('.popup__image');
 
-function openImagePopup(elementTitle, link) {
-  popupElementImage.src = link;
-  popupImageWindow.alt = popupElementImage;
-  popupSignatureCard.textContent = elementTitle;
+ function openImagePopup(elementTitle, link) {
   openPopup(popupImageWindow);
-}
+   popupElementImage.src = link;
+   popupElementImage.alt = elementTitle;
+   popupSignatureCard.textContent = elementTitle;
+ }
 
-buttonClosedImagePopup.addEventListener('click', () => {
-  closePopup(popupImageWindow);
-})
+ 
+ initialCards.forEach((item) => {
 
-function render() {
-  initialCards.reverse().forEach((value) => {
-    const newCardImage = renderElement(value)
-    if (newCardImage) renderCard(newCardImage, elementContent)
-  })
-}
+  const card = new Card(item, '#element__template', openImagePopup) 
+  const cardTemplate = card.generateCard();
 
-function renderElement({ name, link }) {
-  const element = elementTemplate.querySelector('.element').cloneNode(true);
-  const elementTitle = element.querySelector(".element__title");
-  const image = element.querySelector('.element__image');
-  const trashButton = element.querySelector(".element__deleteButton")
-  elementTitle.textContent = name;
-  image.src = link;
-  image.setAttribute("alt", name);
+  document.querySelector('.elements').append(cardTemplate);
+ })
 
-  image.addEventListener('click', () => {
-    openImagePopup(name, link);
-  });
+ buttonClosedImagePopup.addEventListener('click', () => {
+   closePopup(popupImageWindow);
+ })
 
-  trashButton.addEventListener("click", () => {
-    element.remove()
-  })
 
-  element.querySelector('.element__likeButton').addEventListener('click', (e) =>
-    e.target.classList.toggle('element__likeButton_active')
-  );
+ 
 
-  return element;
-}
-render();
+// function renderElement({ name, link }) {
+//   const element = elementTemplate.querySelector('.element').cloneNode(true);
+//   const elementTitle = element.querySelector(".element__title");
+//   const image = element.querySelector('.element__image');
+//   const trashButton = element.querySelector(".element__deleteButton")
+//   elementTitle.textContent = name;
+//   image.src = link;
+//   image.setAttribute("alt", name);
+
+//   image.addEventListener('click', () => {
+//     openImagePopup(name, link);
+//   });
+
+//   trashButton.addEventListener("click", () => {
+//     element.remove()
+//   })
+
+//   element.querySelector('.element__likeButton').addEventListener('click', (e) =>
+//     e.target.classList.toggle('element__likeButton_active')
+//   );
+
+//   return element;
+// }
+
+
+
+
+// function render() {
+//   initialCards.reverse().forEach((value) => {
+//     const newCardImage = renderElement(value)
+//     if (newCardImage) renderCard(newCardImage, elementContent)
+//   })
+// }
+// render();
 
 function renderCard(element, container) {
   container.prepend(element)
 }
 
 buttonOpenAddPopup.addEventListener('click', () => {
-  disableSaveButton(popupAdd, configValidation)
+  //disableSaveButton(popupAdd, configValidation)
   openPopup(popupAdd);
 })
 
@@ -130,7 +142,7 @@ function saveAddCard(event) {
   event.preventDefault();
   const name = popupInputNameImage.value;
   const link = popupInputLinkImage.value;
-  const newCardImage = renderElement({ name, link })
+  const newCardImage = ({ name, link })
   renderCard(newCardImage, elementContent)
   closePopup(popupAdd);
   profileAddForm.reset();
@@ -141,6 +153,5 @@ buttonCloseAddImage.addEventListener('click', () => {
   closePopup(popupAdd);
 })
 
-
-enableValidation(configValidation);
+//enableValidation(configValidation);
 
