@@ -68,28 +68,25 @@ buttonCloseEditProfile.addEventListener('click', () => {
  const popupSignatureCard = document.querySelector('.popup__signature');
  const popupElementImage = document.querySelector('.popup__image');
 
- function openImagePopup(elementTitle, link) {
-  openPopup(popupImageWindow);
-   popupElementImage.src = link;
-   popupElementImage.alt = elementTitle;
-   popupSignatureCard.textContent = elementTitle;
- }
+  function openImagePopup(elementTitle, link) {
+   openPopup(popupImageWindow);
+    popupElementImage.src = link;
+    popupElementImage.alt = elementTitle;
+    popupSignatureCard.textContent = elementTitle;
+  }
 
+  buttonClosedImagePopup.addEventListener('click', () => {
+    closePopup(popupImageWindow);
+  })
  
- initialCards.forEach((item) => {
+ function createCard (data) {
 
-  const card = new Card(item, '#element__template', openImagePopup) 
+  const card = new Card(data, '#element__template', openImagePopup) 
   const cardTemplate = card.generateCard();
 
-  document.querySelector('.elements').append(cardTemplate);
- })
+  return cardTemplate
+ }
 
- buttonClosedImagePopup.addEventListener('click', () => {
-   closePopup(popupImageWindow);
- })
-
-
- 
 
 // function renderElement({ name, link }) {
 //   const element = elementTemplate.querySelector('.element').cloneNode(true);
@@ -126,9 +123,13 @@ buttonCloseEditProfile.addEventListener('click', () => {
 // }
 // render();
 
-function renderCard(element, container) {
-  container.prepend(element)
+function renderCard(cardData, container) {
+  container.prepend(createCard(cardData))
 }
+
+initialCards.forEach((cardData) => {
+renderCard(cardData, elementContent)
+})
 
 buttonOpenAddPopup.addEventListener('click', () => {
   //disableSaveButton(popupAdd, configValidation)
@@ -138,14 +139,10 @@ buttonOpenAddPopup.addEventListener('click', () => {
 const popupInputNameImage = popupAdd.querySelector('.popup__input_type_name');
 const popupInputLinkImage = popupAdd.querySelector('.popup__input_type_url');
 
-function saveAddCard(event) {
+function saveAddCard (event) {
   event.preventDefault();
-  const name = popupInputNameImage.value;
-  const link = popupInputLinkImage.value;
-  const newCardImage = ({ name, link })
-  renderCard(newCardImage, elementContent)
-  closePopup(popupAdd);
-  profileAddForm.reset();
+  renderCard({name: popupInputNameImage.value, link: popupInputLinkImage.value }, elementContent);
+  closePopup(popupAdd)
 }
 profileAddForm.addEventListener('submit', saveAddCard);
 
