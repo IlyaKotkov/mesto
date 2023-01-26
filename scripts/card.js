@@ -39,7 +39,7 @@ export default class Card {
     _setEventListeners() {
 
         this._element.querySelector('.element__likeButton').addEventListener('click', (e) =>
-             e.target.classList.toggle('element__likeButton_active'))
+            e.target.classList.toggle('element__likeButton_active'))
 
         this._element.querySelector('.element__deleteButton')
             .addEventListener('click', () => {
