@@ -13,13 +13,10 @@ const profileDescription = document.querySelector('.profile__description');
 const buttonOpenAddPopup = document.querySelector('.profile__addButton');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
-const buttonCloseEditProfile = popupEdit.querySelector('.popup__closed');
-const buttonCloseAddImage = popupAdd.querySelector('.popup__closed');
 const cardsContainer = document.querySelector('.elements');
 const popupInputNameImage = popupAdd.querySelector('.popup__input_type_name');
 const popupInputLinkImage = popupAdd.querySelector('.popup__input_type_url');
 const popupImageWindow = document.querySelector('.popup_type_image');
-const buttonClosedImagePopup = popupImageWindow.querySelector('.popup__closed');
 const popupSignatureCard = document.querySelector('.popup__signature');
 const popupCardImage = document.querySelector('.popup__image');
 const popups = document.querySelectorAll('.popup')
@@ -46,11 +43,13 @@ function closePopup(popup) {
 
 popups.forEach((item) => {
   item.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__closed')) {
       closePopup(item)
     }
   })
 })
+
+
 
 buttonOpenPopupEdit.addEventListener('click', () => {
   popupInputName.value = profileName.textContent;
@@ -66,24 +65,16 @@ function handleSaveEditProfile(event) {
 }
 profileEditForm.addEventListener('submit', handleSaveEditProfile);
 
-buttonCloseEditProfile.addEventListener('click', () => {
-  closePopup(popupEdit);
-})
-
-function openImagePopup(elementTitle, link) {
+function handleOpenImagePopup(elementTitle, link) {
   openPopup(popupImageWindow);
   popupCardImage.src = link;
   popupCardImage.alt = elementTitle;
   popupSignatureCard.textContent = elementTitle;
 }
 
-buttonClosedImagePopup.addEventListener('click', () => {
-  closePopup(popupImageWindow);
-})
-
 function createCard(data) {
 
-  const card = new Card(data, '#element__template', openImagePopup)
+  const card = new Card(data, '#element__template', handleOpenImagePopup)
   const cardTemplate = card.generateCard();
 
   return cardTemplate
@@ -102,17 +93,13 @@ buttonOpenAddPopup.addEventListener('click', () => {
   openPopup(popupAdd);
 })
 
-function saveAddCard(event) {
+function handleSaveAddCard(event) {
   event.preventDefault();
   renderCard({ name: popupInputNameImage.value, link: popupInputLinkImage.value }, cardsContainer);
   closePopup(popupAdd)
   profileCardForm.reset()
 }
-profileCardForm.addEventListener('submit', saveAddCard);
-
-buttonCloseAddImage.addEventListener('click', () => {
-  closePopup(popupAdd);
-})
+profileCardForm.addEventListener('submit', handleSaveAddCard);
 
 popupEditValidation.enableValidation()
 popupAddValidation.enableValidation()
