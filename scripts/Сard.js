@@ -6,15 +6,6 @@ export default class Card {
         this._handleCardClick = handleCardClick;
     }
 
-    _getTemplate() {
-        this._card = document
-            .querySelector(this._cardSelector)
-            .content
-            .cloneNode(true);
-
-        return this._card;
-    }
-
     generateCard() {
         this._card = document
         .querySelector(this._cardSelector)

@@ -1,4 +1,4 @@
-export default class FormValidator {
+export default class formValidator {
     constructor(configValidation, formElement) {
         this._form = formElement;
         this._config = configValidation
@@ -69,17 +69,4 @@ export default class FormValidator {
     }
 }
 
-
-// function disableSaveButton(popup, config) {
-//   const buttonSubmit = popup.querySelector(config.submitButtonSelector)
-//   if (buttonSubmit) {
-//     buttonSubmit.classList.remove(config.activeButtonClass)
-//     buttonSubmit.classList.add(config.inactiveButtonClass)
-//     buttonSubmit.disabled = true
-//   }
-// }
-
-
-
-
-export { FormValidator }
+export { formValidator }
