@@ -1,7 +1,7 @@
 import Card from "./Сard.js";
 import { initialCards } from "./initialCards.js";
 import { configValidation } from "./configValidation.js";
-import formValidator from "./formValidator.js";
+import FormValidator from "./FormValidator.js";
 
 const profileEditForm = document.querySelector('#editForm')
 const profileCardForm = document.querySelector('#addForm')
@@ -20,8 +20,8 @@ const popupImageWindow = document.querySelector('.popup_type_image');
 const popupSignatureCard = document.querySelector('.popup__signature');
 const popupCardImage = document.querySelector('.popup__image');
 const popups = document.querySelectorAll('.popup')
-const popupEditValidation = new formValidator(configValidation, popupEdit)
-const popupAddValidation = new formValidator(configValidation, popupAdd)
+const popupEditValidation = new FormValidator(configValidation, popupEdit)
+const popupAddValidation = new FormValidator(configValidation, popupAdd)
 
 
 function openPopup(popup) {
