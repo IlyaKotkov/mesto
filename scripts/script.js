@@ -2,6 +2,7 @@ import Card from "./Сard.js";
 import { initialCards } from "./initialCards.js";
 import { configValidation } from "./configValidation.js";
 import FormValidator from "./FormValidator.js";
+import  Section  from "./Section.js";
 
 const profileEditForm = document.querySelector('#editForm')
 const profileCardForm = document.querySelector('#addForm')
@@ -24,30 +25,30 @@ const popupEditValidation = new FormValidator(configValidation, popupEdit)
 const popupAddValidation = new FormValidator(configValidation, popupAdd)
 
 
-function openPopup(popup) {
-  popup.classList.add('popup_opened')
-  document.addEventListener("keydown", closePopupEsc)
-}
+// function openPopup(popup) {
+//   popup.classList.add('popup_opened')
+//   document.addEventListener("keydown", closePopupEsc)
+// }
 
-function closePopupEsc(event) {
-  if (event.code === "Escape") {
-    const popupOpened = document.querySelector(".popup_opened")
-    closePopup(popupOpened)
-  }
-}
+// function closePopupEsc(event) {
+//   if (event.code === "Escape") {
+//     const popupOpened = document.querySelector(".popup_opened")
+//     closePopup(popupOpened)
+//   }
+// }
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened')
-  document.removeEventListener("keydown", closePopupEsc)
-}
+// function closePopup(popup) {
+//   popup.classList.remove('popup_opened')
+//   document.removeEventListener("keydown", closePopupEsc)
+// }
 
-popups.forEach((item) => {
-  item.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__closed')) {
-      closePopup(item)
-    }
-  })
-})
+// popups.forEach((item) => {
+//   item.addEventListener('click', (evt) => {
+//     if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__closed')) {
+//       closePopup(item)
+//     }
+//   })
+// })
 
 buttonOpenPopupEdit.addEventListener('click', () => {
   popupInputName.value = profileName.textContent;
@@ -78,13 +79,13 @@ function createCard(data) {
   return cardTemplate
 }
 
-function renderCard(cardData, container) {
-  container.prepend(createCard(cardData))
-}
+const section = new Section({
+  items: initialCards,
+  renderer: (item) => 
+    section.addItem(createCard(item)), 
+},'.elements')
 
-initialCards.forEach((cardData) => {
-  renderCard(cardData, cardsContainer)
-})
+section.rendererItems();
 
 buttonOpenAddPopup.addEventListener('click', () => {
   popupAddValidation.disableSubmitButton()
@@ -93,7 +94,7 @@ buttonOpenAddPopup.addEventListener('click', () => {
 
 function handleSaveAddCard(event) {
   event.preventDefault();
-  renderCard({ name: popupInputNameImage.value, link: popupInputLinkImage.value }, cardsContainer);
+  cardsRender({ name: popupInputNameImage.value, link: popupInputLinkImage.value }, cardsContainer);
   closePopup(popupAdd)
   profileCardForm.reset()
 }

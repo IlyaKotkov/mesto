@@ -4,12 +4,14 @@ export default class Card {
         this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        console.log(this._cardSelector)
     }
 
     generateCard() {
-        this._card = document
-        .querySelector(this._cardSelector)
-        .content.querySelector(".element")
+        this._card = 
+        document.querySelector(this._cardSelector)
+        .content
+        .querySelector(".element")
         .cloneNode(true);
 
         this._like = this._card.querySelector(".element__likeButton")
@@ -48,6 +50,5 @@ export default class Card {
             });
     }
 }
-
 
 
