@@ -4,15 +4,14 @@ export default class Card {
         this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        console.log(this._cardSelector)
     }
 
     generateCard() {
-        this._card = 
-        document.querySelector(this._cardSelector)
-        .content
-        .querySelector(".element")
-        .cloneNode(true);
+        this._card =
+            document.querySelector(this._cardSelector)
+                .content
+                .querySelector(".element")
+                .cloneNode(true);
 
         this._like = this._card.querySelector(".element__likeButton")
         this._delete = this._card.querySelector(".element__deleteButton")
@@ -31,8 +30,8 @@ export default class Card {
     }
 
     _deleteCard() {
-       this._card.remove();
-       this._card = null;
+        this._card.remove();
+        this._card = null;
     }
 
     _setEventListeners() {
@@ -42,12 +41,12 @@ export default class Card {
         })
 
         this._delete.addEventListener('click', () => {
-                this._deleteCard();
-            });
+            this._deleteCard();
+        })
 
         this._image.addEventListener('click', () => {
-                this._handleCardClick(this._name, this._link);
-            });
+            this._handleCardClick(this._name, this._link);
+        })
     }
 }
 

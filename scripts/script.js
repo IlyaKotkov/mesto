@@ -3,6 +3,8 @@ import { initialCards } from "./initialCards.js";
 import { configValidation } from "./configValidation.js";
 import FormValidator from "./FormValidator.js";
 import  Section  from "./Section.js";
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
 
 const profileEditForm = document.querySelector('#editForm')
 const profileCardForm = document.querySelector('#addForm')
@@ -64,16 +66,25 @@ function handleSaveEditProfile(event) {
 }
 profileEditForm.addEventListener('submit', handleSaveEditProfile);
 
-function handleOpenImagePopup(elementTitle, link) {
-  openPopup(popupImageWindow);
-  popupCardImage.src = link;
-  popupCardImage.alt = elementTitle;
-  popupSignatureCard.textContent = elementTitle;
-}
+// function handleOpenImagePopup(elementTitle, link) {
+//   openPopup(popupImageWindow);
+//   popupCardImage.src = link;
+//   popupCardImage.alt = elementTitle;
+//   popupSignatureCard.textContent = elementTitle;
+// }
+
+const handleOpenImagePopup = new PopupWithImage('.popup_type_image');
+handleOpenImagePopup.setEventListeners()
+
+// function handleCardClick(link, name){
+// const popupOpenImage = new PopupWithImage('.popup__image')
+// popupOpenImage.open(link, name)
+// popupOpenImage.setEventListeners()
+// }
 
 function createCard(data) {
 
-  const card = new Card(data, '#element__template', handleOpenImagePopup)
+  const card = new Card(data, '#element__template', () => handleOpenImagePopup.open(data))
   const cardTemplate = card.generateCard();
 
   return cardTemplate
@@ -85,20 +96,36 @@ const section = new Section({
     section.addItem(createCard(item)), 
 },'.elements')
 
-section.rendererItems();
 
-buttonOpenAddPopup.addEventListener('click', () => {
+
+const popupClassAdd = new PopupWithForm('.popup_type_add',(item) => {
+  section.addItem(createCard(item))
+  popupClassAdd.close()
+  }
+)
+popupClassAdd.setEventListeners()
+
+function popupAddCard() {
   popupAddValidation.disableSubmitButton()
-  openPopup(popupAdd);
-})
-
-function handleSaveAddCard(event) {
-  event.preventDefault();
-  cardsRender({ name: popupInputNameImage.value, link: popupInputLinkImage.value }, cardsContainer);
-  closePopup(popupAdd)
-  profileCardForm.reset()
+  popupClassAdd.open()
 }
-profileCardForm.addEventListener('submit', handleSaveAddCard);
+
+// buttonOpenAddPopup.addEventListener('click', () => {
+//   popupAddValidation.disableSubmitButton()
+//   openPopup(popupAdd);
+// })
+
+// function handleSaveAddCard(event) {
+//   event.preventDefault();
+//   cardsRender({ name: popupInputNameImage.value, link: popupInputLinkImage.value }, cardsContainer);
+//   closePopup(popupAdd)
+//   profileCardForm.reset()
+// }
+// profileCardForm.addEventListener('submit', handleSaveAddCard);
 
 popupEditValidation.enableValidation()
 popupAddValidation.enableValidation()
+
+buttonOpenAddPopup.addEventListener("click", () => popupAddCard())
+
+section.rendererItems();
