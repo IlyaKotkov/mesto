@@ -13,8 +13,8 @@ export default class UserInfo {
         return infoUser;
     }
 
-    setUserInfo(name, activity) {
+    setUserInfo(name, job) {
         this._nameSelector.textContent = name;
-        this._jobSelector.textContent = activity;
+        this._jobSelector.textContent = job;
     }
 }
