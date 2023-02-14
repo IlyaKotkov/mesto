@@ -1,21 +1,19 @@
-import Card from "./Сard.js";
-import { initialCards } from "./initialCards.js";
-import { configValidation } from "./configValidation.js";
-import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
+import "./index.css"
 
-
-const buttonOpenPopupEdit = document.querySelector('.profile__editButton');
-const buttonOpenAddPopup = document.querySelector('.profile__addButton');
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupAdd = document.querySelector('.popup_type_add');
-const popupNameProfileInput = popupEdit.querySelector('.popup__input_type_name');
-const popupActivityInput = popupEdit.querySelector('.popup__input_type_job');
-
-
+import Card from "../components/Сard.js";
+import { initialCards } from "../utils/initialCards.js";
+import { configValidation } from "../utils/configValidation.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import {buttonOpenPopupEdit, 
+        buttonOpenAddPopup, 
+        popupEdit, popupAdd, 
+        popupNameProfileInput, 
+        popupActivityInput
+      } from "../utils/constants.js";
 
 // Открытие картинки на полный экран
 const handleOpenImagePopup = new PopupWithImage('.popup_type_image');

@@ -2,7 +2,6 @@
 <html lang="ru">
 
 <head>
-    <link rel="stylesheet" href="./pages/index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
@@ -11,14 +10,14 @@
 <body class="page">
 
     <header class="header">
-        <img class="header__logo" src="./images/logo-header.svg" alt="логотип сайта 'Mesto'">
+        <img class="header__logo" src="<%=require('./images/logo-header.svg')%>" alt="логотип сайта 'Mesto'">
     </header>
 
     <main class="page__container">
 
         <section class="profile">
             <div class="profile__container">
-                <img class="profile__avatar" src="./images/Jak-iv-kusto.jpg" alt="Аватар">
+                <img class="profile__avatar" src="<%=require('./images/Jak-iv-kusto.jpg')%>" alt="Аватар">
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <button class="profile__editButton" type="button" aria-label="Редактировать"></button>
@@ -99,8 +98,6 @@
             <figcaption class="popup__signature"></figcaption>
         </figure>
     </div>
-
-    <script type="module" src="./scripts/script.js"></script>
 </body>
 
 </html>

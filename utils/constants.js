@@ -1,1 +1,0 @@
-export const cardSelector = document.querySelector('.elements').content

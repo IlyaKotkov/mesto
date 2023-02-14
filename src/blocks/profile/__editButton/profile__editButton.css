@@ -34,7 +34,7 @@
 
 @media screen and (max-width: 767px) {
     .profile__editButton {
-        background-image: url(../../../images/Edit\ Button.png);
+        background-image: url(../../../images/EditButton.png);
         height: 18px;
         width: 18px;
         right: 19px;
