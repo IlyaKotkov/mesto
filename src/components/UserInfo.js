@@ -5,12 +5,10 @@ export default class UserInfo {
     }
 
     getUserInfo() {
-        const infoUser = {
-            name: this._nameSelector.textContent,
-            job: this._jobSelector.textContent,
-        }
-
-        return infoUser;
+        return {
+            name: this._nameSelector.textContent, 
+            job: this._jobSelector.textContent, 
+         }
     }
 
     setUserInfo(name, job) {

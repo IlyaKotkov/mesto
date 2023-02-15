@@ -5,6 +5,8 @@
     height: 282px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    background-color: black;
+    color: white;
     display: block;
     object-fit: cover;
     cursor: pointer;
