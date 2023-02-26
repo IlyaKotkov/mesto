@@ -15,7 +15,7 @@ export default class Card {
         
         return this._card
     }
-    
+
     generateCard() {
         this._element = this._getTemplate();
         this._like = this._element.querySelector(".element__likeButton")

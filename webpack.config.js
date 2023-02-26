@@ -7,7 +7,7 @@ module.exports = {
     entry: { main: './src/pages/script.js' },
     output: {
         path: path.resolve(__dirname,"dist"),
-        filename: 'main.js',
+        filename: 'script.js',
         publicPath: ''
     },
     mode: "development",
@@ -47,7 +47,8 @@ module.exports = {
                 }, 'postcss-loader'
                 ]
             }
-        ],     
+        ],
+             
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -56,4 +57,5 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
     ],
+    "devtool": "eval-source-map"
 }

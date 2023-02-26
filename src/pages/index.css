@@ -25,6 +25,8 @@
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__container/element__container.css);
 @import url(../blocks/element/__deleteButton/element__deleteButton.css);
+@import url(../blocks/element/__likeNumber/element__likeNumber.css);
+@import url(../blocks/element/__likes/element__likes.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);

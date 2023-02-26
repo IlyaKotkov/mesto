@@ -30,13 +30,16 @@
     </main>
 
     <section class="elements" id="elements">
-        <template id="element__template">
+        <template id="element-template">
             <article class="element">
                 <button class="element__deleteButton" aria-label="удалить" type="button"></button>
                 <img class="element__image" src="#" alt="">
                 <div class="element__container">
                     <h2 class="element__title"></h2>
-                    <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
+                    <div class="element__likes">
+                        <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
+                        <span class="element__likeNumber"></span> 
+                    </div>
                 </div>
             </article>
         </template>
@@ -53,13 +56,13 @@
             <form class="popup__form" id="editForm" name="editForm" novalidate>
                 <div class="popup__edit">
                     <label class="popup__label">
-                        <input name="nameInput" id="card-popup-name-profile"
+                        <input name="name" id="card-popup-name-profile"
                             class="popup__input popup__input_type_name" type="text" placeholder="Имя" minlength="2"
                             maxlength="40" required>
                         <span class="card-popup-name-profile-error popup__error"></span>
                     </label>
                     <label class="popup__label">
-                        <input name="jobInput" id="card-popup-job" class="popup__input popup__input_type_job"
+                        <input name="about" id="card-popup-job" class="popup__input popup__input_type_job"
                             type="text" placeholder="Деятельность" minlength="2" maxlength="200" required>
                         <span class="card-popup-job-error popup__error"></span>
                     </label>
