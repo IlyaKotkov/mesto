@@ -8,12 +8,13 @@ import Section from "../components/Section";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import {buttonOpenPopupEdit, 
-        buttonOpenAddPopup, 
-        popupEditPopup, popupAdd, 
-        popupNameProfileInput, 
-        popupActivityInput
-      } from "../utils/constants.js";
+import {
+  buttonOpenPopupEdit,
+  buttonOpenAddPopup,
+  popupEditPopup, popupAdd,
+  popupNameProfileInput,
+  popupActivityInput
+} from "../utils/constants.js";
 
 import Api from "../utils/Api.js"
 import { data } from "autoprefixer";
@@ -29,18 +30,42 @@ const api = new Api({
 let userId
 
 Promise.all([api.getInitialCards(), api.getInformation()])
-.then(([initialCards, userData]) => {
-  userInfo.setUserInfo(userData);
-  userId = userData._id;
-  cardsList.renderItems(initialCards);
-})
-.catch((err) => {
-  console.log(err)
-})
+  .then(([initialCards, userData]) => {
+    userInfo.setUserInfo(userData);
+    userId = userData._id;
+    cardsList.renderItems(initialCards);
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 
 function createCard(data) {
 
-  const card = new Card(data, '#element-template', openImagePopup,)  
+  const card = new Card(
+    data,
+    '#element-template',
+    openImagePopup,
+
+
+    async () => {
+      try {
+        const likeCardCount = await api.setLike(data._id)
+        card.likeCard()
+        card.likesCount(likeCardCount)
+      } catch (error) {
+        return console.log(`Ошибка: ${error}`)
+      }
+    },
+    async () => {
+      try {
+        const likeCardCount = await api.deleteLike(data._id)
+        card.disLikeCard()
+        card.likesCount(likeCardCount)
+      } catch (error) {
+        return console.log(`Ошибка: ${error}`)
+      }
+    }
+  )
   const cardTemplate = card.generateCard();
   return cardTemplate
 }
@@ -49,7 +74,7 @@ const cardsList = new Section({
   renderer: (card) => {
     cardsList.addItem(createCard(card))
   }
-  }, '.elements')
+}, '.elements')
 
 // Открытие картинки на полный экран
 const imagePopup = new PopupWithImage('.popup_type_image');
@@ -60,25 +85,26 @@ function openImagePopup(name, link) {
 }
 // Открытие картинки на полный экран
 
-// Функция генерации карточки
-
-//const renderCard = item => cardsList.addItem(createCard(item))
-// Функция генерации карточки
-
 // Функция создания новой карточки
-// const popupAddCard = new PopupWithForm('.popup_type_add', (item) => {
-//   renderCard(item)
-//   popupAddCard.close()
-// }
-// )
-// popupAddCard.setEventListeners()
+const popupAddCard = new PopupWithForm('.popup_type_add', handleFormSubmit)
 
-// function openPopupAddCard() {
-//   popupAddValidation.disableSubmitButton()
-//   popupAddCard.open()
-// }
+async function handleFormSubmit(data) {
+  try {
+    const newCard = await api.addCard(data)
+    cardsList.addItem(createCard(newCard))
+  }
+  catch (error) {
+    return console.log(`Ошибка: ${error}`)
+  }
+}
+popupAddCard.setEventListeners()
 
-// buttonOpenAddPopup.addEventListener("click", () => openPopupAddCard())
+buttonOpenAddPopup.addEventListener("click", () => {
+  popupAddValidation.disableSubmitButton()
+  popupAddCard.open()
+}, false
+
+)
 // Функция создания новой карточки
 
 // функция редактирования информации
@@ -92,7 +118,6 @@ function handlePopupEditSubmit(data) {
   popupEdit.close()
 }
 
-
 const popupEdit = new PopupWithForm('.popup_type_edit', handlePopupEditSubmit)
 popupEdit.setEventListeners()
 
@@ -105,61 +130,10 @@ function popupEditProfileOpen() {
 }
 
 buttonOpenPopupEdit.addEventListener("click", () => popupEditProfileOpen())
-
-// async function handlePopupEditSubmit(data) {
-//   userInfo.setUserInfo(data.name, data.about)
-//   popupEdit.close()
-// }
-
-// function editProfileInputs({ userName, job }) {
-//   nameInput.value = userName;
-//   jobInput.value = job;
-// }
-
-// const popupEdit = new PopupWithForm({
-//   popupSelector: '.popup_type_edit', 
-//  handlePopupEditSubmit: (dataForm) => {
-//   popupEdit.loading(true);
-//   api.editUserInfo(dataForm)
-//   .then((dataForm) => {
-//     userInfo.setUserInfo(dataForm)
-//     popupEdit.close()
-//   })
-//   .catch((err) => {
-//     console.log(`Ошибка: ${err}`)
-//   })
-//   .finally(() => {
-//     popupEdit.loading(false);
-//   })
-//  }
-// })
-// popupEdit.setEventListeners()
-
-// buttonOpenPopupEdit.addEventListener('click', () => {
-//   const info = userInfo.getUserInfo()
-//   editProfileInputs({
-//     userName: info.userName,
-//     job: info.job
-//   })
-// popupEdit.open()
-// })
-
-// function popupEditProfileOpen() {
-//   const { name, about } = userInfo.getUserInfo()
-//   popupNameProfileInput.value = name
-//   popupActivityInput.value = about
-//   popupEditValidation.disableSubmitButton()
-//   popupEdit.open()
-// }
-
-// buttonOpenPopupEdit.addEventListener("click", () => popupEditProfileOpen())
 // функция редактирования информации
-
 
 const popupEditValidation = new FormValidator(configValidation, popupEditPopup)
 popupEditValidation.enableValidation()
 
 const popupAddValidation = new FormValidator(configValidation, popupAdd)
 popupAddValidation.enableValidation()
-
-//section.renderItems();
