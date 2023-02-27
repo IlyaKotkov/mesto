@@ -63,4 +63,12 @@ export default class Api {
         })
         return this._response(res)
       }
+
+      async deleteCard(cardId) {
+        const res = await fetch(`${this._baseUrl}/cards/${cardId}`, {
+          method: "DELETE",
+          headers: this._headers,
+        })
+        return this._response(res)
+      }
 }

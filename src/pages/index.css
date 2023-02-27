@@ -46,6 +46,7 @@
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__submit/_disabled/popup__submit_disabled.css);
 @import url(../blocks/popup/__label/popup__label.css);
+@import url(../blocks/popup/_type/popup_type_delete.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);

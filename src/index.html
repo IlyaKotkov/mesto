@@ -30,7 +30,7 @@
     </main>
 
     <section class="elements" id="elements">
-        <template id="element-template">
+        <template class="element-template" id="element-template">
             <article class="element">
                 <button class="element__deleteButton" aria-label="удалить" type="button"></button>
                 <img class="element__image" src="#" alt="">
@@ -38,7 +38,7 @@
                     <h2 class="element__title"></h2>
                     <div class="element__likes">
                         <button class="element__likeButton" type="button" aria-label="Понравилось"></button>
-                        <span class="element__likeNumber"></span> 
+                        <span class="element__likeNumber"></span>
                     </div>
                 </div>
             </article>
@@ -56,14 +56,13 @@
             <form class="popup__form" id="editForm" name="editForm" novalidate>
                 <div class="popup__edit">
                     <label class="popup__label">
-                        <input name="name" id="card-popup-name-profile"
-                            class="popup__input popup__input_type_name" type="text" placeholder="Имя" minlength="2"
-                            maxlength="40" required>
+                        <input name="name" id="card-popup-name-profile" class="popup__input popup__input_type_name"
+                            type="text" placeholder="Имя" minlength="2" maxlength="40" required>
                         <span class="card-popup-name-profile-error popup__error"></span>
                     </label>
                     <label class="popup__label">
-                        <input name="about" id="card-popup-job" class="popup__input popup__input_type_job"
-                            type="text" placeholder="Деятельность" minlength="2" maxlength="200" required>
+                        <input name="about" id="card-popup-job" class="popup__input popup__input_type_job" type="text"
+                            placeholder="Деятельность" minlength="2" maxlength="200" required>
                         <span class="card-popup-job-error popup__error"></span>
                     </label>
                 </div>
@@ -79,13 +78,13 @@
             <form class="popup__form" id="addForm" name="addForm">
                 <div class="popup__edit">
                     <label class="popup__label">
-                        <input name="name" id="card-popup-name" class="popup__input popup__input_type_name"
-                            type="text" placeholder="Название" minlength="2" maxlength="30" required>
+                        <input name="name" id="card-popup-name" class="popup__input popup__input_type_name" type="text"
+                            placeholder="Название" minlength="2" maxlength="30" required>
                         <span class="card-popup-name-error popup__error"></span>
                     </label>
                     <label class="popup__label">
-                        <input name="link" id="card-popup-url" class="popup__input popup__input_type_url"
-                            type="url" placeholder="ссылка на картинку" required>
+                        <input name="link" id="card-popup-url" class="popup__input popup__input_type_url" type="url"
+                            placeholder="ссылка на картинку" required>
                         <span class="card-popup-url-error popup__error"></span>
                     </label>
                 </div>
@@ -100,6 +99,16 @@
             <img class="popup__image" src="#" alt="">
             <figcaption class="popup__signature"></figcaption>
         </figure>
+    </div>
+
+    <div class="popup popup_type_delete">
+        <div class="popup__container">
+            <button class="popup__closed" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__editHeader">Вы уверены?</h3>
+            <form class="popup__form" id="confirmationForm" name="confirmationForm">
+                <button class="popup__submit" type="submit">Да</button>
+            </form>
+        </div>
     </div>
 </body>
 

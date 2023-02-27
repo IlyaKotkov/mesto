@@ -1,7 +1,7 @@
 import "./index.css"
 
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Card from "../components/Сard.js";
-import { initialCards } from "../utils/initialCards.js";
 import { configValidation } from "../utils/configValidation.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section";
@@ -41,11 +41,7 @@ Promise.all([api.getInitialCards(), api.getInformation()])
 
 function createCard(data) {
 
-  const card = new Card(
-    data,
-    '#element-template',
-    openImagePopup,
-
+  const card = new Card(data,'#element-template',openImagePopup,userId,
 
     async () => {
       try {
@@ -64,11 +60,26 @@ function createCard(data) {
       } catch (error) {
         return console.log(`Ошибка: ${error}`)
       }
+    },
+    () => {
+      popupWithConfirmation.open(card)
     }
-  )
+)
   const cardTemplate = card.generateCard();
   return cardTemplate
 }
+
+const popupWithConfirmation = new PopupWithConfirmation(
+  '.popup_type_delete',
+  async (card) => {
+    api.deleteCard(card._cardId).then(() => {
+      card.remove()
+      popupWithConfirmation.close()
+    })
+    .catch((error) => console.log(`Ошибка: ${error}`))
+  }
+)
+popupWithConfirmation.setEventListeners()
 
 const cardsList = new Section({
   renderer: (card) => {
@@ -93,8 +104,8 @@ async function handleFormSubmit(data) {
     const newCard = await api.addCard(data)
     cardsList.addItem(createCard(newCard))
   }
-  catch (error) {
-    return console.log(`Ошибка: ${error}`)
+  catch (err) {
+    return console.log(`Ошибка: ${err}`)
   }
 }
 popupAddCard.setEventListeners()
@@ -102,9 +113,7 @@ popupAddCard.setEventListeners()
 buttonOpenAddPopup.addEventListener("click", () => {
   popupAddValidation.disableSubmitButton()
   popupAddCard.open()
-}, false
-
-)
+})
 // Функция создания новой карточки
 
 // функция редактирования информации
