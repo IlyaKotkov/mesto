@@ -18,6 +18,7 @@
         <section class="profile">
             <div class="profile__container">
                 <img class="profile__avatar" src="<%=require('./images/Jak-iv-kusto.jpg')%>" alt="Аватар">
+                <button class="profile__editAvatarButton"></button>
                 <div class="profile__info">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <button class="profile__editButton" type="button" aria-label="Редактировать"></button>
@@ -107,6 +108,23 @@
             <h3 class="popup__editHeader">Вы уверены?</h3>
             <form class="popup__form" id="confirmationForm" name="confirmationForm">
                 <button class="popup__submit" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_type_editAvatar">
+        <div class="popup__container">
+            <button class="popup__closed" type="button" aria-label="Закрыть"></button>
+            <h3 class="popup__editHeader">Обновить аватар</h3>
+            <form class="popup__form" id="confirmationForm" name="confirmationForm">
+                <div class="popup__edit">
+                    <label class="popup__label">
+                        <input name="avatar" id="avatar-popup-url" class="popup__input popup__input_type_url" type="url"
+                            placeholder="ссылка на аватар" required>
+                        <span class="card-popup-url-error popup__error"></span>
+                    </label> 
+                </div>
+                <button class="popup__submit" type="submit">Сохранить</button>
             </form>
         </div>
     </div>

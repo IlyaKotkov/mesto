@@ -29,6 +29,7 @@ export default class Card {
         this._delete = this._element.querySelector(".element__deleteButton")
         this._image = this._element.querySelector(".element__image")
         this._likeNum = this._element.querySelector(".element__likeNumber")
+        this._likeNum.textContent = this._likes.length
         
         this._setEventListeners();
 
@@ -36,12 +37,9 @@ export default class Card {
         this._image.alt = this._name;
         this._ownerDeleteCard();
         this._element.querySelector('.element__title').textContent = this._name;
-        this._likeNum.textContent = this._likes.lenght
 
         return this._element;
     }
-
-    
 
     likeCard() {
         this._like.classList.add('element__likeButton_active');
@@ -54,9 +52,8 @@ export default class Card {
     likesCount(data) {
         this._likes = data.likes
         this._likeNum.textContent = this._likes.length;
-        
     }
-    
+
     remove() {
         this._element.remove()
       }

@@ -15,7 +15,7 @@
 
 @media screen and (max-width: 1023px) {
     .profile__avatar {
-        margin-right: 0;
+        margin-right: 30px;
         max-width: 150px;
         min-height: 150px;
     }
@@ -23,6 +23,7 @@
 
 @media screen and (max-width: 767px) {
     .profile__avatar {
+        margin-right: 0;
         max-width: 120px;
         min-height: 120px;
         align-self: center;

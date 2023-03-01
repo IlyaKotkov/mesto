@@ -71,4 +71,15 @@ export default class Api {
         })
         return this._response(res)
       }
+
+      async editAvatarUser(data) {
+        const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
+          method: "PATCH",
+          headers: this._headers,
+          body: JSON.stringify({
+            avatar: data.avatar,
+          }),
+        })
+        return this._response(res)
+      }
 }

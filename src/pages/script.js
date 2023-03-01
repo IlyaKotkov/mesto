@@ -13,11 +13,12 @@ import {
   buttonOpenAddPopup,
   popupEditPopup, popupAdd,
   popupNameProfileInput,
-  popupActivityInput
+  popupActivityInput,
+  buttonOpenEditAvatarPopup,
+  popupAvatar
 } from "../utils/constants.js";
 
 import Api from "../utils/Api.js"
-import { data } from "autoprefixer";
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
@@ -120,9 +121,11 @@ buttonOpenAddPopup.addEventListener("click", () => {
 const userInfo = new UserInfo({
   name: ".profile__name",
   about: ".profile__description",
+  avatar: ".profile__avatar"
 })
 
 function handlePopupEditSubmit(data) {
+  api.editUserInfo(data)
   userInfo.setUserInfo(data)
   popupEdit.close()
 }
@@ -140,6 +143,28 @@ function popupEditProfileOpen() {
 
 buttonOpenPopupEdit.addEventListener("click", () => popupEditProfileOpen())
 // функция редактирования информации
+// функция обновления аватара
+
+ const popupEditAvatar = new PopupWithForm('.popup popup_type_editAvatar', handlePopupAvatarSubmit)
+ popupEditAvatar.setEventListeners()
+
+ function handlePopupAvatarSubmit(data) {
+  api.editAvatarUser(data)
+     userInfo.setUserInfo(data)
+  popupEditAvatar.close()
+ }
+
+function popupEditAvatarOpen() {
+  popupEditAvatarValidation.disableSubmitButton()
+  popupEditAvatar.open()
+}
+
+buttonOpenEditAvatarPopup.addEventListener("click", popupEditAvatarOpen)
+   //popupEditAvatarValidation.disableSubmitButton()
+   //popupAvatar.open()
+ 
+ const popupEditAvatarValidation = new FormValidator(configValidation, popupAvatar)
+ popupEditAvatarValidation.enableValidation()
 
 const popupEditValidation = new FormValidator(configValidation, popupEditPopup)
 popupEditValidation.enableValidation()

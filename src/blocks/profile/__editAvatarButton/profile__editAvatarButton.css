@@ -1,0 +1,40 @@
+.profile__editAvatarButton {
+    background-image: url("../../../images/Vector.svg");
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    border: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: .8s ease;
+}
+
+.profile__editAvatarButton:hover {
+    opacity: .8;
+    background-color: #000;
+}
+
+@media screen and (max-width: 1279px) {
+    .profile__editAvatarButton {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .profile__editAvatarButton {
+        
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile__editAvatarButton {
+        width: 120px;
+        height: 120px;
+        align-self: center;
+    }
+}
