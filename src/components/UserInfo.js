@@ -12,7 +12,7 @@ export default class UserInfo {
         return {
             name: this._nameSelector.textContent, 
             about: this._jobSelector.textContent,
-            avatar: this._avatarSelector.textContent
+            avatar: this._avatarSelector.src
             
          }
     }
@@ -21,7 +21,8 @@ export default class UserInfo {
     setUserInfo(data) {
         this._nameSelector.textContent = data.name;
         this._jobSelector.textContent = data.about;
-        this._avatarSelector.textContent = data.avatar
+        this._avatarSelector.src = data.avatar
+        
         console.log(data.name)
         console.log(data.about)
         console.log(data.avatar)

@@ -111,10 +111,13 @@ async function handleFormSubmit(data) {
 }
 popupAddCard.setEventListeners()
 
-buttonOpenAddPopup.addEventListener("click", () => {
+function addPopupOpen() {
   popupAddValidation.disableSubmitButton()
   popupAddCard.open()
-})
+}
+
+
+buttonOpenAddPopup.addEventListener("click", () => addPopupOpen())
 // Функция создания новой карточки
 
 // функция редактирования информации
@@ -125,9 +128,10 @@ const userInfo = new UserInfo({
 })
 
 function handlePopupEditSubmit(data) {
-  api.editUserInfo(data)
-  userInfo.setUserInfo(data)
-  popupEdit.close()
+  api.editUserInfo(data).then((res) => {
+    userInfo.setUserInfo(res)
+    popupEdit.close()
+  })
 }
 
 const popupEdit = new PopupWithForm('.popup_type_edit', handlePopupEditSubmit)
@@ -145,13 +149,16 @@ buttonOpenPopupEdit.addEventListener("click", () => popupEditProfileOpen())
 // функция редактирования информации
 // функция обновления аватара
 
- const popupEditAvatar = new PopupWithForm('.popup popup_type_editAvatar', handlePopupAvatarSubmit)
+ const popupEditAvatar = new PopupWithForm('.popup_type_editAvatar', handlePopupAvatarSubmit)
  popupEditAvatar.setEventListeners()
 
  function handlePopupAvatarSubmit(data) {
-  api.editAvatarUser(data)
-     userInfo.setUserInfo(data)
-  popupEditAvatar.close()
+  console.log(api)
+  console.log(data)
+  api.editAvatar(data).then((res) => {
+    userInfo.setUserInfo(res)
+    popupEditAvatar.close()
+  })
  }
 
 function popupEditAvatarOpen() {
@@ -160,8 +167,6 @@ function popupEditAvatarOpen() {
 }
 
 buttonOpenEditAvatarPopup.addEventListener("click", popupEditAvatarOpen)
-   //popupEditAvatarValidation.disableSubmitButton()
-   //popupAvatar.open()
  
  const popupEditAvatarValidation = new FormValidator(configValidation, popupAvatar)
  popupEditAvatarValidation.enableValidation()
