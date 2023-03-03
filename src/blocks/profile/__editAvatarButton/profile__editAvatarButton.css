@@ -6,6 +6,7 @@
     position: absolute;
     opacity: 0;
     border: 0;
+    cursor: pointer;
     background-repeat: no-repeat;
     background-position: center;
     transition: .8s ease;
