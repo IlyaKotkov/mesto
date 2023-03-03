@@ -78,6 +78,7 @@ popupWithConfirmation.setEventListeners()
       card.remove(res)
       popupWithConfirmation.close()
     })
+    .catch((error) => console.log(`Ошибка: ${error}`))
   }
 
 const cardsList = new Section({
@@ -98,15 +99,16 @@ function openImagePopup(name, link) {
 // Функция создания новой карточки
 const popupAddCard = new PopupWithForm('.popup_type_add', handleFormSubmit)
 
-async function handleFormSubmit(data) {
+function handleFormSubmit(data) {
 
     popupAddCard.loading(true)
     api.addCard(data).then((res) => {
       cardsList.addItem(createCard(res))
+      popupAddCard.close()
     })
+    .catch((error) => console.log(`Ошибка: ${error}`))
   .finally(() => {
     popupAddCard.loading(false)
-    popupAddCard.close()
   })
 }
 popupAddCard.setEventListeners()
@@ -131,25 +133,24 @@ function handlePopupEditSubmit(data) {
   popupEdit.loading(true)
   api.editUserInfo(data).then((res) => {
     userInfo.setUserInfo(res)
+    popupEdit.close()
   })
+  .catch((error) => console.log(`Ошибка: ${error}`))
   .finally(() => {
     popupEdit.loading(false)
-    popupEdit.close()
   })
 }
 
 const popupEdit = new PopupWithForm('.popup_type_edit', handlePopupEditSubmit)
 popupEdit.setEventListeners()
 
-function popupEditProfileOpen() {
-  const { name, about } = userInfo.getUserInfo()
-  popupNameProfileInput.value = name
-  popupActivityInput.value = about
-  popupEditValidation.disableSubmitButton()
+function openPopupProfile() {
   popupEdit.open()
+  popupEdit.setInputValue(userInfo.getUserInfo())
+  popupEditValidation.disableSubmitButton()
 }
 
-buttonOpenPopupEdit.addEventListener("click", () => popupEditProfileOpen())
+buttonOpenPopupEdit.addEventListener("click", () => openPopupProfile())
 // функция редактирования информации
 // функция обновления аватара
 
@@ -162,18 +163,18 @@ buttonOpenPopupEdit.addEventListener("click", () => popupEditProfileOpen())
     userInfo.setUserInfo(res)
     popupEditAvatar.close()
   })
+  .catch((error) => console.log(`Ошибка: ${error}`))
   .finally(() => {
     popupEditAvatar.loading(false)
-    popupEditAvatar.close()
   })
  }
 
-function popupEditAvatarOpen() {
+function openAvatarProfile() {
   popupEditAvatarValidation.disableSubmitButton()
   popupEditAvatar.open()
 }
 
-buttonOpenEditAvatarPopup.addEventListener("click", popupEditAvatarOpen)
+buttonOpenEditAvatarPopup.addEventListener("click", openAvatarProfile)
  
  const popupEditAvatarValidation = new FormValidator(configValidation, popupAvatar)
  popupEditAvatarValidation.enableValidation()

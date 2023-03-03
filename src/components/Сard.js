@@ -35,6 +35,7 @@ export default class Card {
 
         this._image.src = this._link;
         this._image.alt = this._name;
+        this._isCardLiked()
         this._ownerDeleteCard();
         this._element.querySelector('.element__title').textContent = this._name;
 
@@ -56,6 +57,7 @@ export default class Card {
 
     remove() {
         this._element.remove()
+        this._element = ''
       }
     
     _ownerDeleteCard() {
@@ -63,6 +65,16 @@ export default class Card {
             this._delete.remove()
           }
     }
+
+    _isCardLiked() {
+        this._likes.forEach((elementId) => {
+            if (elementId._id === this._userId) {
+              this.likeCard()
+            } else {
+              this.disLikeCard()
+            }
+          })
+      }
 
     _setEventListeners() {
 

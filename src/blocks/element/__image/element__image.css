@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 1279px) {
     .element__image {
-        width: 302px;
+        max-width: 302px;
     }
 }
 
